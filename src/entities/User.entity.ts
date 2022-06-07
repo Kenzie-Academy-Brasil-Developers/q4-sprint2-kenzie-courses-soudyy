@@ -6,7 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToMany,
-  JoinTable
+  JoinTable,
 } from "typeorm";
 import { Course } from "./Course.entity";
 
@@ -36,7 +36,7 @@ export class User {
   @Column()
   updatedAt: Date;
 
-  @ManyToMany(() => Course, course => course.students, { eager: true })
+  @ManyToMany(() => Course, (course) => course.students, { eager: true })
   courses: Course[];
 
   comparePwd = async (pwd: string): Promise<boolean> => {

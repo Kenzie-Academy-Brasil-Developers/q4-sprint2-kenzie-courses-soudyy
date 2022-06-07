@@ -1,0 +1,120 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "docker-sidny",
+    "description": "descrição",
+    "version": "1.0.1"
+  },
+  "server": [
+    {
+      "url": "http://localhost:3000/api-documentation",
+      "description": "testando"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["User"],
+        "description": "Essa é a rota de registro de um novo usuario",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+
+            "examples": {
+              "user": {
+                "values": {
+                  "firstname": "Sidny",
+                  "lastname": "Silva",
+                  "email": "sidny@mail.com",
+                  "password": "string",
+                  "isAdm": true
+                }
+              }
+            },
+            "responses": {
+              "401": {
+                "description": "descrição"
+              },
+              "400": {
+                "description": "descrição"
+              },
+              "201": {
+                "description": "created",
+                "content": {
+                  "schema": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["User"]
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["User"]
+      }
+    },
+    "/users/:id": {
+      "get": {
+        "tags": ["User"]
+      },
+      "patch": {
+        "tags": ["User"]
+      }
+    },
+    "/courses": {
+      "post": {
+        "tags": ["Courses"]
+      },
+      "/courses": {
+        "get": {
+          "tags": ["Courses"]
+        }
+      }
+    },
+    "/courses/:id/users": {
+      "post": {
+        "tags": ["Courses"]
+      }
+    },
+
+    "/courses/:id": {
+      "patch": {
+        "tags": ["Courses"]
+      }
+    }
+  },
+  "components": {
+    "schema": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "isAdm": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
